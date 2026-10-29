@@ -270,7 +270,7 @@ struct Dashboard: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack { Text("Sensitivity"); Spacer(); Text(monitor.sensitivity < 0.34 ? "Gentle" : monitor.sensitivity > 0.66 ? "Sensitive" : "Balanced").foregroundStyle(accent) }.font(.system(size: 12))
                 Slider(value: $monitor.sensitivity, in: 0...1).tint(accent)
-                Toggle("Random meme sounds · includes FAHHHH", isOn: $monitor.voice)
+                Toggle("50 random meme sounds · includes FAHHHH", isOn: $monitor.voice)
                 Toggle("Show camera preview", isOn: $monitor.showPreview)
                 Toggle("Launch at login", isOn: Binding(get: { monitor.login }, set: { monitor.setLogin($0) }))
             }.font(.system(size: 12)).toggleStyle(.switch).controlSize(.small)

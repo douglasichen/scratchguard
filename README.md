@@ -9,7 +9,7 @@ This is a personal habit reminder, not a treatment for eczema. It detects head t
 - Lives in the macOS menu bar; closing the settings window keeps monitoring running.
 - Starts quietly in the menu bar after camera permission has been granted.
 - Detects a hand near your head on the first qualifying frame, without waiting for scratching motion.
-- Plays one of **10 meme sounds** randomly, avoiding consecutive repeats.
+- Plays one of **50 meme sounds** randomly, avoiding consecutive repeats.
 - Alerts immediately each time a hand returns to the head, even during a previous sound. Sounds overlap. A hand that stays near the head repeats an alert every four seconds.
 - Offers sensitivity adjustment, camera preview, a test button, pause, and launch at login.
 - Processes camera frames locally with Apple Vision. No recordings or uploads.
@@ -33,7 +33,7 @@ Normal head touching also triggers alerts. Poor lighting, hidden hands, and an o
 
 ## Sounds
 
-The collection includes FAHHHH, Vine Boom, Anime Wow, Among Us role reveal, dramatic brass, error, Aayein, ACK, notification, and slap clips. Audio is bundled for offline playback at 65% player volume, relative to your system volume.
+The 50-sound collection includes FAHHHH, Vine Boom, Anime Wow, Among Us role reveal, dramatic brass, error, Aayein, ACK, notification, and slap clips. Audio is bundled for offline playback at 65% player volume, relative to your system volume.
 
 See [SOUND_SOURCES.md](SOUND_SOURCES.md) for download URLs. Third-party audio belongs to its respective rights holders; this repository does not claim ownership or grant a license to those clips.
 
