@@ -10,7 +10,7 @@ This is a personal habit reminder, not a treatment for eczema. It detects head t
 - Starts quietly in the menu bar after camera permission has been granted.
 - Detects a hand near your head on the first qualifying frame, without waiting for scratching motion.
 - Plays one of **10 meme sounds** randomly, avoiding consecutive repeats.
-- Repeats alerts at most once every four seconds.
+- Alerts immediately each time a hand returns to the head, even during a previous sound. Sounds overlap. A hand that stays near the head repeats an alert every four seconds.
 - Offers sensitivity adjustment, camera preview, a test button, pause, and launch at login.
 - Processes camera frames locally with Apple Vision. No recordings or uploads.
 

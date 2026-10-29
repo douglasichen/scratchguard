@@ -27,7 +27,7 @@ final class Monitor: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleB
     var timer: Timer?
     var observers: [NSObjectProtocol] = []
     let speaker = AVSpeechSynthesizer()
-    var memePlayer: AVAudioPlayer?
+    var memePlayers: [AVAudioPlayer] = []
     var previousMeme: URL?
     lazy var memeURLs = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: "Sounds") ?? []
     var onAlert: (() -> Void)?
@@ -119,7 +119,8 @@ final class Monitor: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleB
         running = false
         UserDefaults.standard.set(false, forKey: "resumeMonitoring")
         speaker.stopSpeaking(at: .immediate)
-        memePlayer?.stop()
+        memePlayers.forEach { $0.stop() }
+        memePlayers.removeAll()
         queue.async {
             self.session.stopRunning()
             self.detector.reset()
@@ -131,8 +132,8 @@ final class Monitor: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleB
         if voice {
             let choices = memeURLs.filter { $0 != previousMeme }
             if let url = (choices.isEmpty ? memeURLs : choices).randomElement(), let player = try? AVAudioPlayer(contentsOf: url) {
-                memePlayer?.stop()
-                memePlayer = player
+                memePlayers.removeAll { !$0.isPlaying }
+                memePlayers.append(player)
                 player.volume = 0.65
                 player.prepareToPlay()
                 player.play()
@@ -273,7 +274,7 @@ struct Dashboard: View {
                 Toggle("Show camera preview", isOn: $monitor.showPreview)
                 Toggle("Launch at login", isOn: Binding(get: { monitor.login }, set: { monitor.setLogin($0) }))
             }.font(.system(size: 12)).toggleStyle(.switch).controlSize(.small)
-            Text("No recordings. No uploads. Alerts on the first detected hand near your head, including ordinary head touching. Reminders repeat at most every 4 seconds. Keep your face and hands in view. Runs while your Mac is awake; closing this window keeps monitoring in the menu bar.").font(.system(size: 10)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+            Text("No recordings. No uploads. Alerts on the first detected hand near your head, including ordinary head touching. New head touches alert immediately; held touches repeat every 4 seconds. Sounds can overlap. Keep your face and hands in view. Runs while your Mac is awake; closing this window keeps monitoring in the menu bar.").font(.system(size: 10)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
         }.padding(24).frame(width: 490).background(Color(red: 0.055, green: 0.085, blue: 0.075)).preferredColorScheme(.dark)
     }
 }
