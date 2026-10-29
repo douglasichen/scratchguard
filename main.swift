@@ -295,7 +295,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: 30)
         statusItem.autosaveName = "ScratchGuard"
         statusItem.isVisible = true
-        statusItem.button?.title = "SG"
+        statusItem.button?.title = "✋"
         statusItem.button?.toolTip = "ScratchGuard — head-touch reminders"
         statusItem.button?.setAccessibilityLabel("ScratchGuard menu")
         let menu = NSMenu()
