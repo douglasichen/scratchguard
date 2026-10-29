@@ -286,8 +286,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     var banner: NSPanel?
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.button?.title = "✋ SG"
+        // Reset placement once so the item is not stranded in menu-bar overflow.
+        if !UserDefaults.standard.bool(forKey: "menuPlacementV2") {
+            UserDefaults.standard.set(0, forKey: "NSStatusItem Preferred Position ScratchGuard")
+            UserDefaults.standard.set(true, forKey: "NSStatusItem Visible ScratchGuard")
+            UserDefaults.standard.set(true, forKey: "menuPlacementV2")
+        }
+        statusItem = NSStatusBar.system.statusItem(withLength: 30)
+        statusItem.autosaveName = "ScratchGuard"
+        statusItem.isVisible = true
+        statusItem.button?.title = "SG"
         statusItem.button?.toolTip = "ScratchGuard — head-touch reminders"
         statusItem.button?.setAccessibilityLabel("ScratchGuard menu")
         let menu = NSMenu()

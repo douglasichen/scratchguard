@@ -23,7 +23,7 @@ Requires an Apple silicon Mac, macOS 13 or later, and Apple command-line develop
 open build/ScratchGuard.app
 ```
 
-Click **Start monitoring** and allow camera access. Use the hand icon in the top-right menu bar to open settings, start/pause, or quit. Enable **Launch at login** if desired. A previously active session resumes on launch when camera permission remains authorized. Keep the app in a stable location; after moving it, toggle launch at login off and on.
+Click **Start monitoring** and allow camera access. Use the **SG** label in the top-right menu bar to open settings, start/pause, or quit. Enable **Launch at login** if desired. A previously active session resumes on launch when camera permission remains authorized. Keep the app in a stable location; after moving it, toggle launch at login off and on.
 
 Monitoring requires an awake Mac and a working camera. Camera access remains revocable. Updates to this locally signed app may prompt for camera permission again.
 
