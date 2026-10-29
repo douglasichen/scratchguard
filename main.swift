@@ -287,7 +287,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.button?.image = NSImage(systemSymbolName: "hand.raised.fingers.spread", accessibilityDescription: "ScratchGuard")
+        statusItem.button?.title = "✋ SG"
+        statusItem.button?.toolTip = "ScratchGuard — head-touch reminders"
+        statusItem.button?.setAccessibilityLabel("ScratchGuard menu")
         let menu = NSMenu()
         menu.addItem(withTitle: "Open ScratchGuard", action: #selector(showWindow), keyEquivalent: "")
         menu.addItem(withTitle: "Start / pause monitoring", action: #selector(toggleMonitoring), keyEquivalent: "")
